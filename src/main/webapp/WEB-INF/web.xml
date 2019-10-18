@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+  <display-name></display-name>
+  <servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>cn.jintian.servlet.LoginServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>TextLogin</servlet-name>
+    <servlet-class>cn.jintian.servlet.TextLogin</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RegisteredServlet</servlet-name>
+    <servlet-class>cn.jintian.servlet.RegisteredServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>FollowHouseServlet</servlet-name>
+    <servlet-class>cn.jintian.servlet.FollowHouseServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>IndexOldHouseServlet</servlet-name>
+    <servlet-class>cn.jintian.servlet.IndexOldHouseServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>IndexNewHouseServlet</servlet-name>
+    <servlet-class>cn.jintian.servlet.IndexNewHouseServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>SecondNewHouseServlet</servlet-name>
+    <servlet-class>cn.jintian.servlet.SecondNewHouseServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>RentHouseServlet</servlet-name>
+    <servlet-class>cn.jintian.servlet.RentHouseServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>IndexServlet</servlet-name>
+    <servlet-class>cn.jintian.servlet.IndexServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>RegSendMessageServlet</servlet-name>
+    <servlet-class>cn.jintian.servlet.RegSendMessageServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>LoginoutServlet</servlet-name>
+    <servlet-class>cn.jintian.servlet.LoginoutServlet</servlet-class>
+  </servlet>
+
+
+
+  <servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/LoginServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>TextLogin</servlet-name>
+    <url-pattern>/TextLogin</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RegisteredServlet</servlet-name>
+    <url-pattern>/RegisteredServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>FollowHouseServlet</servlet-name>
+    <url-pattern>/FollowHouseServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>IndexOldHouseServlet</servlet-name>
+    <url-pattern>/IndexOldHouseServlet</url-pattern>
+  </servlet-mapping>
+
+	<servlet-mapping>
+    <servlet-name>SecondNewHouseServlet</servlet-name>
+    <url-pattern>/SecondNewHouseServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>IndexNewHouseServlet</servlet-name>
+    <url-pattern>/IndexNewHouseServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>RentHouseServlet</servlet-name>
+    <url-pattern>/RentHouseServlet</url-pattern>
+  </servlet-mapping>
+ 
+
+  <servlet-mapping>
+    <servlet-name>IndexServlet</servlet-name>
+    <url-pattern>/IndexServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>RegSendMessageServlet</servlet-name>
+    <url-pattern>/RegSendMessageServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LoginoutServlet</servlet-name>
+    <url-pattern>/LoginoutServlet</url-pattern>
+  </servlet-mapping>
+
+	<welcome-file-list>
+	    <welcome-file>IndexServlet</welcome-file>
+	</welcome-file-list>
+</web-app>
