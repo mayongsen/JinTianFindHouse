@@ -26,6 +26,7 @@
 3.  提交代码
 4.  新建 Pull Request
 5. laomaxiugaide
+6. sec
 
 #### 码云特技
 
