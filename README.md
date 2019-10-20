@@ -66,4 +66,4 @@ curl -L https://github.com/xgl-charon/JinTianFindHouse/archive/1.0.zip
 
 ## 7. 预览图
 
-![index](http://blogdown.xgl6.top/jintianindex)
+![微信截图_20191020175743.png](https://i.loli.net/2019/10/20/SdnvGTQwezAU3ku.png)
