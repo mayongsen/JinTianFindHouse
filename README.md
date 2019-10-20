@@ -1,6 +1,6 @@
 <p align="center">
 <a href="https://github.com/xgl-charon/JinTianFindHouse" target="_blank">
-	<img src="http://blogdown.xgl6.top/jintianlogo.png" width=""/>
+	<img src="https://i.loli.net/2019/10/20/rLdXWc6nqiQx4pK.png" width=""/>
 </a>
 </p>
 
