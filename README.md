@@ -70,3 +70,4 @@ curl -L https://github.com/xgl-charon/JinTianFindHouse/archive/1.0.zip
 
 ## 8.添加测试
 - 老马修改1
+- 第二个账号测试修改
