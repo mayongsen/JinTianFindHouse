@@ -5,7 +5,7 @@ body{
 .wrap{
     box-sizing: border-box;
     height: 100vh;
-    background: url("../img/bj.jpg") no-repeat center;
+    background: url("../images/bj.jpg") no-repeat center;
     background-size: auto 100vh;
     position:  relative;
 }
