@@ -39,7 +39,7 @@ public class RegFindUserServlet extends HttpServlet {
 			info.setFlag(true);
 		}else {
 			info.setFlag(false);
-			info.setErrorMsg("×¢²áÊ§°Ü");
+			info.setErrorMsg("ÒÑÖØ¸´");
 		}
 		ObjectMapper mapper = new ObjectMapper();
 		String json = mapper.writeValueAsString(info);

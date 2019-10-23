@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div id="ajax-hook"></div>
 <div class="wrap">
     <div class="wpn">
-    <!-- <form action="LoginServlet"> -->
+    <form action="LoginServlet">
         <div class="form-data pos">
             <a href=""><img src="Login/statics/images/logo.png" class="head-logo"></a>
             <div class="change-login">
@@ -30,8 +30,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
             <div class="form1">
                 <p class="p-input pos">
-                    <label for="num" name="username">手机号</label>
-                    <input type="text" id="num">
+                    <label for="tel" name="username">手机号</label>
+                    <input type="text" id="tel">
                     <span></span>
                     <span class="tel-warn num-err hide"><em>账号或密码错误，请重新输入</em><i class="icon-warn"></i></span>
                 </p>
@@ -69,76 +69,116 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
             <button class="lang-btn off log-btn" disabled>登录</button>
         </div>
-        <!-- </form> -->
+        </form>
     </div>
 </div>
-
 <script src="Login/statics/js/jquery.js"></script>
 <script src="Login/statics/js/agree.js"></script>
-<!-- <script src="Login/statics/js/login.js"></script> -->
+<script src="Login/statics/js/login.js"></script>
 <script>
-	$(function(){
-		var phone = false;
-		var pwd = false;
-		function checkPhone(phone){ 
-    			
-    			if(!(/^1[3456789]\d{9}$/.test(phone))){ 
-        			//alert("手机号码有误，请重填");
-        			$("#num").next().text("手机号格式不正确,请重新输入").css("color","red");
-        			return false; 
-    			} 
-    			return true;
-		}
-		$("body").delegate("#num","propertychange input",function () {
-        	
-        		if ($("#num").val().length > 10 ){
-        			//alert(1);
-            		phone = true;
-            		//$(".log-btn").removeClass("off").css("background","#42a5f5");
-            		if(phone && pwd){
-            			//alert(code);
-            			$(".lang-btn").prop("disabled",false).removeClass("off").css({"background":"#42a5f5"});
-            		}
-        		}else{
-            		$(".lang-btn").css({"background":"#e5e5e5"});
-            		$(".log-btn").addClass("off");
-        		}
-    		});
-    	
-    	$	("body").delegate("#pass","propertychange input",function () {
-	    		if($(this).val().length > 0 ){
-					pwd = true;
-					if(phone && pwd){
-            			//alert(code);
-            			$(".lang-btn").prop("disabled",false).removeClass("off").css({"background":"#42a5f5"});
-            		}
-				}else{
-            		$(".lang-btn").css({"background":"#e5e5e5"});
-            		$(".log-btn").addClass("off");
-        		}
-    		});
-    	
-    	
-    	
-		$(".lang-btn").click(function(){
-			$.ajax({
-					url:"LoginServlet?phone="+$("#num").val()+"&pwd="+$("#pass").val(),
-					type:"get",
-					success:function(data){
-						alert(data);
-						if(data == '登录成功'){
-							window.location.replace("IndexServlet");
-						}
-						//window.location.replace("Login/index.jsp");
-					}
-				});
-		});
-		
-		$(".message").click(function(){
-			alert("敬请期待");
-		});
-		
-	});
+    var reg_phone = false;
+    var reg_pwd = false;
+    var reg_only = false;
+    /**
+     * 检查用户输入的手机号是否合法
+     * @returns {boolean}
+     */
+    function checkPhone(){
+        //1.获取用户手机号的值
+        var tel = $("#tel").val();
+        //2.定义手机号正则表达式
+        var reg_tel = /^1[3456789]\d{9}$/;
+        //3.判断用户输入是否满足正则
+        var flag = reg_tel.test(tel);
+        if (flag){
+            //此时,用户名合法
+            $("#tel").next().next().text("");
+        }else{
+            //此时,用户名不合法
+            $("#tel").next().next().removeClass("hide").text("手机号格式不正确,请重新输入").css("color","red");
+        }
+        return flag;
+    }
+    /**
+     * 检查用户输入的密码是否合法
+     */
+    function checkPassword(){
+        //1.获取密码的值
+        var pwd = $("#pass").val();
+        //2.定义正则
+        var reg_pwd = /^\w{8,20}$/;
+        // 3.判断,给出提示信息
+        var falg = reg_pwd.test(pwd);
+        if (falg){
+            //此时,密码检查通过
+            $("#pass").next().removeClass("hide").html("密码检查通过").css("color","green");
+            return true;
+        }else{
+            $("#pass").next().removeClass("hide").html("密码不符合规范,请重新输入").css("color","red");
+            return false;
+        }
+    }
+    /**
+     * 检查用户名是否唯一
+     */
+    function findUser(){
+        var tel = $("#tel").val();
+        $.post("RegFindUserServlet",{phoneNumber:tel},function (data) {
+            //alert(data.flag);
+            if (data.flag){
+                reg_only = false;
+                $("#tel").next().next().removeClass("hide").text("未注册").css("color","red");
+
+            }else{
+                reg_only = true;
+                $("#tel").next().next().removeClass("hide").text("该账户可登录").css("color","green");
+            }
+            enclick();
+        });
+    }
+    /**
+     * 启用按钮
+     */
+    function enclick(){
+        if (reg_only && reg_pwd && reg_phone){
+            $(".lang-btn").prop("disabled",false).removeClass("off");
+        }else{
+            $(".lang-btn").prop("disabled",true).addClass("off");
+        }
+    }
+    $(function () {
+        $("body").delegate("#tel","propertychange input",function (){
+            if (checkPhone()){
+                reg_phone = true;
+                //此时手机号格式校验通过,开始查询用户名是否重复
+                findUser();
+            }else {
+                reg_phone = false;
+            }
+            enclick();
+        });
+        $("body").delegate("#pass","propertychange input",function (){
+            if (checkPassword()){
+                reg_pwd = true;
+            }else {
+                reg_pwd = false;
+            }
+            enclick();
+        });
+        $(".lang-btn").click(function () {
+           $.post("LoginServlet",{phone:$("#tel").val(),pwd:$("#pass").val()},function (data) {
+               if (data.flag){
+                   window.location.replace("IndexServlet");
+               }else {
+                   $("#pass").next().removeClass("hide").html("账号密码错误,请重新输入").css("color","red");
+                   $("#pass").val("");
+                   $(".lang-btn").prop("disabled",true).addClass("off");
+               }
+           });
+           return false;
+        });
+
+    })
 </script>
 <div style="text-align:center;">
 </div>
