@@ -25,7 +25,7 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.52.sec06</version>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>hsf.schema</artifactId>
             <version>edas1.0.0</version>
@@ -34,11 +34,16 @@
             <groupId>com.alibaba.edas</groupId>
             <artifactId>edas-sdk</artifactId>
             <version>1.5.0</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>com.aliyun</groupId>
             <artifactId>aliyun-java-sdk-core</artifactId>
-            <version>4.1.0</version>
+            <version>4.0.3</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>1.9.4</version>
         </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
@@ -49,6 +54,11 @@
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>5.1.48</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.10</version>
         </dependency>
     </dependencies>
 

@@ -5,7 +5,7 @@ body{
 .wrap{
     box-sizing: border-box;
     height: 100vh;
-    background: url("../img/bj.jpg") no-repeat center;
+    background: url("../images/bj.jpg") no-repeat center;
     background-size: auto 100vh;
     position:  relative;
 }
@@ -79,6 +79,17 @@ body{
     right: 0;
     top: 24px;
     z-index: 10;
+    /*border: none;
+    background: none;*/
+}
+.send6{
+    color: #969696;
+    position: absolute;
+    right: 0;
+    top: 24px;
+    z-index: 10;
+    border: none;
+    background: none;
 }
 .form-data .send:hover{
     color: #3895e8;

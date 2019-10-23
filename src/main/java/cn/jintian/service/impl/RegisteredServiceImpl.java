@@ -24,15 +24,15 @@ public class RegisteredServiceImpl implements IRegisteredService {
 	}
 
 	@Override
-	public String isExist(String userName) {
+	public boolean isExist(String userName) {
 		RegisteredDaoImpl register = new RegisteredDaoImpl();
 		int result = register.isExist(userName);
 		if (userName == "") {
-			return "请输入您的手机号";
+			return false;
 		}else if(result == 0){
-			return "可以注册";
+			return true;
 		}else{
-			return "已重复";
+			return false;
 		}
 	}
 	

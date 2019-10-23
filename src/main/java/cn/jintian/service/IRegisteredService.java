@@ -8,5 +8,5 @@ import cn.jintian.pojo.Users;
  */
 public interface IRegisteredService {
 	Users registered(Users u);
-	String isExist(String userName);
+	boolean isExist(String userName);
 }
